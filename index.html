@@ -5,14 +5,23 @@
     <title>Cat Clicker</title>
 </head>
 <body>
-    <ul></ul>
     <div>
+        <p>The Cool Cats</p>
+        <ul data-bind = "foreach: catArry">
+            <li data-bind = "text: name, click: $parent.setCurrentCat($data)"></li>
+        </ul>
+    </div>
+    <div data-bind = "with:currentCat()">
 
         <h2 data-bind = "text: name"></h2>
         <h3 data-bind = "text: levels"></h3>
         <div data-bind = "text: clickCount"></div>
-        <img src="" alt="cute cat" data-bind ="click: incrementCounter, attr: {src: imgSrc}">
-
+        <img src="" alt="cute cat" data-bind ="click: $parent.incrementCounter, attr: {src: imgSrc}">
+        <p>Nicknames</p>
+        <ul data-bind = "foreach: nicknames">
+        <!-- could use text: $data if array had contained strings instead of object literals -->
+            <li data-bind = "text: nickname"></li>
+        </ul>
     </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>
